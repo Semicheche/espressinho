@@ -1,0 +1,39 @@
+<%= form_with(model: expense) do |form| %>
+  <% if expense.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+      <ul>
+        <% expense.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :date  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="field voucher-upload">
+    <%= form.label :voucher do %>
+      Aenxar Comprovante (JPG, PDF) <br><i class="material-icons">add_a_photo</i>
+    <% end %>
+    <%= form.file_field :voucher %>
+  </div>
+
+  <div class="actions right">
+    <%= form.submit "Submit", class: "btn waves-effect waves-light grey"  %>
+  </div>
+<% end %>

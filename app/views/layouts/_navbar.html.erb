@@ -1,0 +1,11 @@
+<nav>
+    <div class="nav-wrapper black">
+      <a href="/" class="brand-logo">Espressinho</a>
+      <ul id="nav-mobile" class="right exit-button">
+        <% if session["warden.user.user.key"] %>
+          <li class="user-name"><%= link_to User.find(session["warden.user.user.key"][0][0]).name, class: "name-navbar" %></li>
+        <% end %>
+        <li><%= link_to "sair", destroy_user_session_path, method: :delete, class: "btn waves-effect waves-light grey" %></li>
+      </ul>
+    </div>
+  </nav>
